@@ -1,3 +1,9 @@
+"""
+Auteur : Acori Ross
+Date : 2025-04-25
+Titre : Dessin d'une ferme avec la librairie Arcade.
+"""
+
 import arcade
 import math
 
@@ -8,7 +14,7 @@ SCREEN_HEIGHT = 600
 class MyGame(arcade.Window):
     def __init__(self, width, height, title):
         super().__init__(width, height, title)
-        arcade.set_background_color((135, 206, 235))
+        arcade.set_background_color((135, 206, 235, 255))
 
     def setup(self):
         pass
@@ -59,26 +65,30 @@ class MyGame(arcade.Window):
 
 
         # =====================
-        # CHEMIN DE TERRE
+        # chemin en terre
         # =====================
         arcade.draw_triangle_filled(170, 0, 230, 0, 200, 175, (139, 115, 85))
 
         # =====================
         # arbre (loin de guache)
         # =====================
-        def draw_tree(tx, ty, trunk_h=80, crown_r=45, color_trunk=arcade.color.BROWN, color_crown=(20, 100, 20)):
-            arcade.draw_lrbt_rectangle_filled(tx - 8, tx + 8, ty, ty + trunk_h, color_trunk)
-            arcade.draw_circle_filled(tx, ty + trunk_h + crown_r - 10, crown_r, color_crown)
-            arcade.draw_circle_filled(tx - 15, ty + trunk_h + crown_r - 25, int(crown_r * 0.8), color_crown)
-            arcade.draw_circle_filled(tx + 15, ty + trunk_h + crown_r - 25, int(crown_r * 0.8), color_crown)
-            arcade.draw_circle_filled(tx, ty + trunk_h + crown_r + 5, int(crown_r * 0.75), (20, 100, 20))
+        def draw_tree(x, y, trunk_h=80, crown_r=45, color_trunk=arcade.color.BROWN, color_crown=(20, 100, 20)):
+            """
+            Dessine un arbre à la position (x, y).
+            trunk_h : hauteur du tronc
+            crown_r : rayon du feuillage
+            """
+            arcade.draw_lrbt_rectangle_filled(x - 8, x + 8, y, y + trunk_h, color_trunk)
+            arcade.draw_circle_filled(x, y + trunk_h + crown_r - 10, crown_r, color_crown)
+            arcade.draw_circle_filled(x - 15, y + trunk_h + crown_r - 25, int(crown_r * 0.8), color_crown)
+            arcade.draw_circle_filled(x + 15, y + trunk_h + crown_r - 25, int(crown_r * 0.8), color_crown)
+            arcade.draw_circle_filled(x, y + trunk_h + crown_r + 5, int(crown_r * 0.75), (20, 100, 20))
 
         draw_tree(30, 220, 70, 40, (100, 60, 20), (20, 100, 20))
         draw_tree(75, 215, 75, 42, (100, 60, 20), (20, 100, 20))
         draw_tree(120, 218, 68, 38, (100, 60, 20), (20, 100, 20))
         draw_tree(680, 210, 65, 38, (100, 60, 20), (20, 100, 20))
         draw_tree(730, 205, 72, 40, (100, 60, 20), (20, 100, 20))
-
         # =====================
         # house
         # =====================
@@ -163,10 +173,10 @@ class MyGame(arcade.Window):
         arcade.draw_lrbt_rectangle_filled(tx + 95, tx + 160, ty + 60, ty + 95, (200, 35, 25))
         arcade.draw_ellipse_filled(tx + 160, ty + 77, 20, 35, (200, 35, 25))
 
-        # pot d'echappement
+        # pot d'echappement en gaz
         arcade.draw_lrbt_rectangle_filled(tx + 152, tx + 160, ty + 95, ty + 120, (80, 80, 80))
 
-        # cabine
+        # la cabine
         arcade.draw_lrbt_rectangle_filled(tx + 30, tx + 100, ty + 95, ty + 145, (180, 30, 20))
         arcade.draw_lrbt_rectangle_filled(tx + 25, tx + 105, ty + 142, ty + 150, (180, 30, 20))
 
